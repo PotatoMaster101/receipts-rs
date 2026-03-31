@@ -1,0 +1,32 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check Formatting
+        run: cargo fmt --all --check --quiet
+
+  test:
+    needs: fmt
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ "macos-latest", "ubuntu-latest", "windows-latest" ]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run Tests
+        run: cargo test --release
