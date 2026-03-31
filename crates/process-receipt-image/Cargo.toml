@@ -1,0 +1,20 @@
+[package]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+name = "process-receipt-image"
+readme = "README.md"
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+aws-config = { workspace = true }
+aws-sdk-dynamodb = { workspace = true }
+lambda_runtime = { workspace = true }
+tokio = { workspace = true }
+utils = { workspace = true }
+
+anyhow = { version = "1.0" }
+aws-sdk-s3 = { version = "1.131" }
+aws-sdk-textract = { version = "1.98" }
+aws_lambda_events = { default-features = false, features = ["s3"], version = "1.1" }

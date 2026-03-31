@@ -1,0 +1,27 @@
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+authors = ["PotatoMaster101"]
+edition = "2024"
+license = "GPL-3.0-or-later"
+readme = "README.md"
+repository = "https://github.com/PotatoMaster101/receipts-rs"
+version = "0.1.0"
+
+[workspace.dependencies]
+aws-config = { features = ["behavior-version-latest"], version = "1.8" }
+aws-sdk-bedrockruntime = { version = "1.130" }
+aws-sdk-dynamodb = { version = "1.110" }
+aws-sdk-s3 = { version = "1.131" }
+aws-sdk-textract = { version = "1.98" }
+lambda_http = { version = "1.1" }
+lambda_runtime = { version = "1.1" }
+serde = { features = ["derive"], version = "1.0" }
+serde_dynamo = { features = ["aws-sdk-dynamodb+1"], version = "4.3" }
+tokio = { features = ["full"], version = "1.52" }
+utils = { path = "crates/utils" }
+
+[profile.release]
+strip = true
